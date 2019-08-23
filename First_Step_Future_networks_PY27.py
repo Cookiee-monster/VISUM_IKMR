@@ -104,11 +104,16 @@ def generate_new_ver_file():
             # Zmiana parametru STAND_EDYTOWANY na True, jako że odcinek podległ edycji
             link.SetAttValue("STAND_EDYTOWANY", True)
 
+
         # Podczytanie parametrów domyślnych dla typu odcinka
 
         # TODO ustalić jakie parametry ostatecznie mają być podczytywane
         Visum.Net.Links.SetDefaultsFromLinkType(OnlyActive=True, Attributes=["CAPPRT", "V0PRT",
                                                                                 "TSYSSET", "NUMLANES", "T_PUTSYS"])
+
+        for link in active_links:
+            # Powrót do stanu pierwotnego parametru STAND_EDYTOWANY na False
+            link.SetAttValue("STAND_EDYTOWANY", False)
 
         # Zapisanie pliku z nazwą rozszerzoną o rok
 
